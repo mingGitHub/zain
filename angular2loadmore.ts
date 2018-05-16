@@ -1,0 +1,12 @@
+    loadmore(){
+        if(this.pagenumber>=this.totalsize){
+            this._message.info('数据已全部加载完毕。');
+        }
+        else{
+        this.pagenumber+=10;
+        this.userService.getAllShiftExchanges(1,this.pagenumber,'','').subscribe(r=>{
+            this.totalsize=r['totalCount'];
+            this.shiftexchanges=this._shiftexchanges=r&&r['records'];
+        });
+    }
+    }
